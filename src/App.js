@@ -1,24 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
+import { Dashboard } from './Dashboard';
+import { UeberUns } from './UeberUns';
+import { Kontakt } from './Kontakt';
+import { Login } from './Login';
+import { AuthProvider } from './AuthProvider';
+import { ProtectedRoute } from './ProtectedRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavLink to="/">Dashboard</NavLink>
+      <NavLink to="/ueber-uns">Über uns</NavLink>
+      <NavLink to="/kontakt">Kontakt</NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ueber-uns"
+            element={
+              <ProtectedRoute>
+                <UeberUns />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/kontakt"
+            element={
+              <ProtectedRoute>
+                <Kontakt />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
