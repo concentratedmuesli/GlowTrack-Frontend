@@ -2,6 +2,7 @@ import './Dashboard.css';
 import { useEffect, useState, useRef } from 'react';
 import { useAuth } from './AuthProvider';
 import { getUserWeights } from './API';
+import { useSelector } from 'react-redux';
 
 export function Dashboard() {
   const [weights, setWeights] = useState(null);
@@ -10,8 +11,9 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const weightRef = useRef(null);
   const { user } = useAuth();
-
+  const username = useSelector((state) => state.username.value);
   // console.log(weightRef.current.value);
+  console.log(username)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +77,7 @@ export function Dashboard() {
   return (
     <div className="card">
       <div className="cardContent">
+        <h1>Hallo, {username.payload} </h1>
         <h2 className="cardHeader">Was ist dein Gewicht heute?</h2>
         <div className="inputContainer">
           <input className="input" ref={weightRef} />
