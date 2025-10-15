@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #444444;
+  background-color: #FFF9F5 
+}
+
+.nav {
+  background-color: #ffffff;
+  display: flex;
+  margin: 15px auto;
+  width: 50vw;
+  border-radius: 15px;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 10px 10px 42px -18px rgba(0,0,0,0.75);
+}
+
+.navHeader {
+  text-decoration: none;
+    color: #444444;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+.logo {
+  font-family: "Playfair", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    font-size: 1.8rem;
+}
+
+@media (max-width: 992px) {
+.nav {
+  width:90vw;
+  flex-wrap: wrap;
+}
+
+.card {
+  width:90vw;
+  flex-wrap: wrap;
+}
+}

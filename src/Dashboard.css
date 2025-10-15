@@ -1,0 +1,82 @@
+.card {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  padding: 40px 0 70px;
+  width: 50vw;
+  border-radius: 15px;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 10px 10px 42px -18px rgba(0, 0, 0, 0.75);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 60%;
+}
+
+.inputContainer  {
+  display:flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%
+}
+
+.cardHeader {
+  font-weight: 300;
+}
+
+.input {
+  background-color: #F8D7DA;
+  border: none;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.label {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.checkmarkButton {
+  background-color: #D16B8F;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.checkmarkButton:hover {
+  background-color: #F8D7DA
+}
+
+.checkmarkButton:active {
+  background-color: #D16B8F
+}
+
+th {
+  font-weight: 400;
+  text-align: justify;
+}
+
+@media (max-width: 992px) {
+  .card {
+    min-width: 90vw;
+    flex-wrap: wrap;
+  }
+}

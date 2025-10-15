@@ -1,14 +1,16 @@
+import './Kontakt.css'
+
 export function Kontakt() {
 
   return (
-    <div>
-      <h2>Kontakt</h2>
-      <form>
-        <label>Betreff</label>
-        <input/>
-        <label>Nachricht</label>
-        <input/>
-        <button>Schicken</button>
+    <div className="card">
+      <h2 className="cardHeader">Kontakt</h2>
+      <form className="cardContent">
+        <label className="label">Betreff</label>
+        <input className="input"/>
+        <label className="label">Nachricht</label>
+        <textarea rows={5} className="input"/>
+        <button className="button">Schicken</button>
       </form>
     </div>
   )

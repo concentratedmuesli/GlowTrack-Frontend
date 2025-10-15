@@ -10,10 +10,20 @@ import { ProtectedRoute } from './ProtectedRoute';
 function App() {
   return (
     <BrowserRouter>
-      <NavLink to="/">Dashboard</NavLink>
-      <NavLink to="/ueber-uns">Über uns</NavLink>
-      <NavLink to="/kontakt">Kontakt</NavLink>
-      <NavLink to="/login">Login</NavLink>
+      <nav className="nav">
+        <NavLink to="/" className="logo navHeader">
+          GlowTrack
+        </NavLink>
+        <NavLink to="/ueber-uns" className="navHeader">
+          Über uns
+        </NavLink>
+        <NavLink to="/kontakt" className="navHeader">
+          Kontakt
+        </NavLink>
+        <NavLink to="/login" className="navHeader">
+          Login
+        </NavLink>
+      </nav>
       <AuthProvider>
         <Routes>
           <Route

@@ -1,6 +1,9 @@
+import './UeberUns.css';
+
 export function UeberUns() {
   return (
-    <div>
+    <div className="card">
+      <div className="cardContent">
       <h2>Wer wir sind</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -23,6 +26,7 @@ export function UeberUns() {
         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
+    </div>
     </div>
   );
 }
