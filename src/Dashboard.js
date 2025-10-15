@@ -1,29 +1,22 @@
 import './Dashboard.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useAuth } from './AuthProvider';
+import { getUserWeights } from './API';
 
 export function Dashboard() {
-  // const weights = [
-  //   { index: 1, entry: 70, date: '14.10' },
-  //   { index: 2, entry: 69, date: '15.10' },
-  // ];
-
   const [weights, setWeights] = useState(null);
   const [error, setError] = useState(null);
+  const [postingError, setPostingError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const weightRef = useRef(null);
+  const { user } = useAuth();
+
+  // console.log(weightRef.current.value);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user-weights', {
-          method: 'GET',
-        });
-        if (!response.ok) {
-          throw new Error(
-            `Server responded with an error [${response.status}]`
-          );
-        }
-        const data = await response.json();
-        setWeights(data);
+        setWeights(await getUserWeights());
       } catch (error) {
         setError(error);
       } finally {
@@ -31,7 +24,37 @@ export function Dashboard() {
       }
     };
     fetchData();
-  }, [weights]);
+  }, []);
+
+  function addNewWeight(event) {
+    event.preventDefault();
+    const sendData = async () => {
+      fetch('http://localhost:3000/user-weights', {
+        method: 'POST',
+        body: JSON.stringify({
+          userId: user.username,
+          weight: weightRef.current.value,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Post request failed with status ${response.status}`
+            );
+          }
+          return response.json();
+        })
+        .then(() => {
+          setPostingError(false);
+          weightRef.current.value = '';
+        })
+        .catch((err) => setPostingError(true));
+    };
+    sendData();
+  }
 
   if (loading) {
     return (
@@ -54,8 +77,8 @@ export function Dashboard() {
       <div className="cardContent">
         <h2 className="cardHeader">Was ist dein Gewicht heute?</h2>
         <div className="inputContainer">
-          <input className="input" />
-          <button type="submit" className="checkmarkButton">
+          <input className="input" ref={weightRef} />
+          <button className="checkmarkButton" onClick={addNewWeight}>
             {'\u2713'}
           </button>
         </div>
