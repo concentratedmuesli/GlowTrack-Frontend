@@ -6,6 +6,7 @@ import { Kontakt } from './Kontakt';
 import { Login } from './Login';
 import { AuthProvider } from './AuthProvider';
 import { ProtectedRoute } from './ProtectedRoute';
+import { Logout } from './Logout';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <NavLink to="/kontakt" className="navHeader">
           Kontakt
         </NavLink>
-        <NavLink to="/login" className="navHeader">
+        <NavLink to="/logout" className="navHeader">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -59,6 +60,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
