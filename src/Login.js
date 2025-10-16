@@ -1,10 +1,8 @@
 import './Login.css';
-import { useRef } from 'react';
+import { useRef} from 'react';
 import { useAuth } from './AuthProvider';
 import { useNavigate } from 'react-router-dom';
-import { postUserLogin } from './API';
 import { useDispatch } from 'react-redux';
-import { setUsername } from './slice/usernameSlice';
 
 export function Login() {
   const usernameRef = useRef(null);
@@ -15,13 +13,18 @@ export function Login() {
 
   function attemptLogin(event) {
     event.preventDefault();
-    postUserLogin(usernameRef.current.value, passwordRef.current.value).then(
-      (loginData) => {
-        login(loginData.username);
-        dispatch(setUsername(loginData.username))
-        navigate('/');
-      }
-    );
+    dispatch({
+      type: 'LOGIN_REQUEST',
+      payload: {
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
+        // TODO: Explain why I did it like this.
+        onSuccess: (loginData) => {
+          login(loginData.username);
+          navigate('/');
+        },
+      },
+    });
   }
 
   return (

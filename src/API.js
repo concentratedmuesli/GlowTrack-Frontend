@@ -3,7 +3,9 @@ export const getUserWeights = async () => {
     method: 'GET',
   });
   if (!response.ok) {
-    throw new Error(`getUserWeights: Server responded with an error [${response.status}]`);
+    throw new Error(
+      `getUserWeights: Server responded with an error [${response.status}]`
+    );
   }
   return await response.json();
 };
@@ -20,7 +22,9 @@ export const postUserLogin = async (username, password) => {
     },
   });
   if (!response.ok) {
-    throw new Error(`postUserLogin: Server responded with an error [${response.status}]`);
+    throw new Error(
+      `postUserLogin: Server responded with an error [${response.status}]`
+    );
   }
   return await response.json();
 };

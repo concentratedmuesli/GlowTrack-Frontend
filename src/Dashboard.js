@@ -11,9 +11,7 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const weightRef = useRef(null);
   const { user } = useAuth();
-  const username = useSelector((state) => state.username.value);
-  // console.log(weightRef.current.value);
-  console.log(username)
+  const userInfo = useSelector((state) => state.userInfo);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +75,11 @@ export function Dashboard() {
   return (
     <div className="card">
       <div className="cardContent">
-        <h1>Hallo, {username.payload} </h1>
+        {userInfo.value.payload && userInfo.value.payload.username ? (
+          <h1>Hallo, {userInfo.value.payload.username} </h1>
+        ) : (
+          <h1>Hallo,</h1>
+        )}
         <h2 className="cardHeader">Was ist dein Gewicht heute?</h2>
         <div className="inputContainer">
           <input className="input" ref={weightRef} />

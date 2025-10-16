@@ -4,7 +4,6 @@ import { useLocation, Navigate } from 'react-router-dom';
 export function ProtectedRoute({ children }) {
   const { user } = useAuth();
   const location = useLocation();
-  console.log(user);
   if (!user) {
     return (
       <Navigate
