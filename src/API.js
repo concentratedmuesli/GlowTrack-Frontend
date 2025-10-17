@@ -12,11 +12,10 @@ export const getUserWeights = async () => {
   return await response.json();
 };
 
-export const postNewWeight = async (username, userWeight) => {
+export const postNewWeight = async (userWeight) => {
   const response = await fetch('/api/user-weights', {
     method: 'POST',
     body: JSON.stringify({
-      userId: username,
       weight: userWeight,
     }),
     headers: {

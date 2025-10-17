@@ -30,7 +30,7 @@ export function Dashboard() {
     event.preventDefault();
     const sendData = async () => {
       try {
-        postNewWeight(user.username, weightRef.current.value);
+        postNewWeight(weightRef.current.value);
       } catch (err) {
         setPostingError(true);
       } finally {
@@ -61,7 +61,7 @@ export function Dashboard() {
     <div className="card">
       <div className="cardContent">
         {userInfo.value.payload && userInfo.value.payload.username ? (
-          <h1>Hallo, {userInfo.value.payload.username} </h1>
+          <h1>Hallo, {userInfo.value.payload.username}! </h1>
         ) : (
           <h1>Hallo,</h1>
         )}
@@ -85,7 +85,7 @@ export function Dashboard() {
               return (
                 <tr key={entry.entry_id}>
                   <td>
-                    {new Date(entry.date).toLocaleDateString('de-DE', {
+                    {new Date(entry.creation_time).toLocaleDateString('de-DE', {
                       dateStyle: 'short',
                     })}
                   </td>

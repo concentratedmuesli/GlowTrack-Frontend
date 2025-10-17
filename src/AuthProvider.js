@@ -10,8 +10,8 @@ export function useAuth() {
 // TODO: and use only redux to check if the user is logged in
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const login = (username) => {
-    setUser({ username });
+  const login = (user) => {
+    setUser({ user });
   };
   const logout = () => {
     setUser(null);
