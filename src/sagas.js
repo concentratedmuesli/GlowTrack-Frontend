@@ -6,7 +6,7 @@ export function* postLoginSaga(action) {
   try {
     const response = yield call(
       postUserLogin,
-      action.payload.username,
+      action.payload.email,
       action.payload.password
     );
     action.payload.onSuccess(response);

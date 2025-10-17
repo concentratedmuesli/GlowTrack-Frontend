@@ -28,11 +28,11 @@ export const postNewWeight = async (username, userWeight) => {
   }
 };
 
-export const postUserLogin = async (username, password) => {
+export const postUserLogin = async (email, password) => {
   const response = await fetch('/api/login', {
     method: 'POST',
     body: JSON.stringify({
-      username: username,
+      email: email,
       password: password,
     }),
     headers: {
@@ -45,4 +45,22 @@ export const postUserLogin = async (username, password) => {
     );
   }
   return await response.json();
+};
+
+export const postMessage = async (title, body) => {
+  const response = await fetch('/api/user-messages', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: title,
+      body: body,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(
+      `postMessage: Server responded with an error [${response.status}]`
+    );
+  }
 };

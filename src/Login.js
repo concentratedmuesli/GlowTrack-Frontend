@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 export function Login() {
-  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export function Login() {
     dispatch({
       type: 'LOGIN_REQUEST',
       payload: {
-        username: usernameRef.current.value,
+        email: emailRef.current.value,
         password: passwordRef.current.value,
         // TODO: Explain why I did it like this.
         onSuccess: (loginData) => {
@@ -31,10 +31,10 @@ export function Login() {
     <div className="card">
       <h2>Login</h2>
       <form className="loginForm">
-        <label className="label">Benutzername</label>
-        <input className="input" ref={usernameRef} />
+        <label className="label">Emailadresse</label>
+        <input className="input" ref={emailRef} />
         <label className="label">Passwort</label>
-        <input className="input" ref={passwordRef} />
+        <input type="password" className="input" ref={passwordRef} />
         <button className="button" onClick={attemptLogin}>
           Login
         </button>
