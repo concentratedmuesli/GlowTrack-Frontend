@@ -1,7 +1,7 @@
 import './Dashboard.css';
 import { useEffect, useState, useRef } from 'react';
 import { useAuth } from './AuthProvider';
-import { getUserWeights } from './API';
+import { getUserWeights, postNewWeight } from './API';
 import { useSelector } from 'react-redux';
 
 export function Dashboard() {
@@ -29,29 +29,14 @@ export function Dashboard() {
   function addNewWeight(event) {
     event.preventDefault();
     const sendData = async () => {
-      fetch('http://localhost:3000/user-weights', {
-        method: 'POST',
-        body: JSON.stringify({
-          userId: user.username,
-          weight: weightRef.current.value,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              `Post request failed with status ${response.status}`
-            );
-          }
-          return response.json();
-        })
-        .then(() => {
-          setPostingError(false);
-          weightRef.current.value = '';
-        })
-        .catch((err) => setPostingError(true));
+      try {
+        postNewWeight(user.username, weightRef.current.value);
+      } catch (err) {
+        setPostingError(true);
+      } finally {
+        setPostingError(false);
+        weightRef.current.value = '';
+      }
     };
     sendData();
   }

@@ -1,5 +1,7 @@
+// TODO: navigate to login if anything return 401
+
 export const getUserWeights = async () => {
-  const response = await fetch('http://localhost:3000/user-weights', {
+  const response = await fetch('/api/user-weights', {
     method: 'GET',
   });
   if (!response.ok) {
@@ -10,8 +12,24 @@ export const getUserWeights = async () => {
   return await response.json();
 };
 
+export const postNewWeight = async (username, userWeight) => {
+  const response = await fetch('/api/user-weights', {
+    method: 'POST',
+    body: JSON.stringify({
+      userId: username,
+      weight: userWeight,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Post request failed with status ${response.status}`);
+  }
+};
+
 export const postUserLogin = async (username, password) => {
-  const response = await fetch('http://localhost:3000/login', {
+  const response = await fetch('/api/login', {
     method: 'POST',
     body: JSON.stringify({
       username: username,
