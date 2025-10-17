@@ -1,15 +1,28 @@
 import './Kontakt.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useAuth } from './AuthProvider';
+import { postMessage } from './API';
 
 export function Kontakt() {
   const titleRef = useRef(null);
   const bodyRef = useRef(null);
+  const [postingError, setPostingError] = useState(null);
+  const { user } = useAuth();
 
   function sendMessage(event) {
     event.preventDefault();
-    const title = titleRef.current.value
-    const body = bodyRef.current.value
-    postMessage(title, body)
+    const sendData = async () => {
+      try {
+        postMessage(titleRef.current.value, bodyRef.current.value);
+      } catch (err) {
+        setPostingError(true);
+      } finally {
+        setPostingError(false);
+        titleRef.current.value = '';
+        bodyRef.current.value = '';
+      }
+    };
+    sendData();
   }
 
   return (
