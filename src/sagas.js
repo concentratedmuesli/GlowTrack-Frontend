@@ -13,6 +13,7 @@ export function* postLoginSaga(action) {
     yield put(setUserInfo(response));
   } catch (err) {
     // TODO: Signalize error
+    console.log(err);
   }
 }
 
