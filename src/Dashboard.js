@@ -72,6 +72,7 @@ export default function Dashboard() {
           <button className="checkmarkButton" onClick={addNewWeight}>
             {'\u2713'}
           </button>
+          {postingError ? <div>Dein Gewicht konnte nicht gespeichert werden!</div> : <></>}
         </div>
         <h2>Dein Gewichtsverlauf</h2>
         <table>
