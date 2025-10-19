@@ -49,11 +49,11 @@ export default function Kontakt() {
     <div className="card">
       <h2>Kontakt</h2>
       <form className="cardContent">
-        <label className="label">Betreff</label>
-        <input ref={titleRef} className="input" />
+        <label htmlFor="title" className="label">Betreff</label>
+        <input id="title" ref={titleRef} className="input" />
         {missingTitle ? <div>Das Betreff kann nicht leer sein.</div> : <></>}
-        <label className="label">Nachricht</label>
-        <textarea ref={bodyRef} rows={5} className="input" />
+        <label htmlFor='body' className="label">Nachricht</label>
+        <textarea id="body" ref={bodyRef} rows={5} className="input" />
         {missingBody ? <div>Die Nachricht kann nicht leer sein.</div> : <></>}
         <button className="button" onClick={sendMessage}>
           Schicken

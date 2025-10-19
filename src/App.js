@@ -39,29 +39,31 @@ function App() {
           </svg>
         </NavLink>
       </nav>
-      <AuthProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/ueber-uns" element={<UeberUns />} />
-          <Route
-            path="/kontakt"
-            element={
-              <ProtectedRoute>
-                <Kontakt />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-        </Routes>
-      </AuthProvider>
+      <main>
+        <AuthProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/ueber-uns" element={<UeberUns />} />
+            <Route
+              path="/kontakt"
+              element={
+                <ProtectedRoute>
+                  <Kontakt />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+        </AuthProvider>
+      </main>
     </BrowserRouter>
   );
 }
