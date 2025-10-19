@@ -10,13 +10,13 @@ export function Dashboard() {
   const [postingError, setPostingError] = useState(null);
   const [loading, setLoading] = useState(true);
   const weightRef = useRef(null);
-  const { user } = useAuth();
+  const { logout } = useAuth();
   const userInfo = useSelector((state) => state.userInfo);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setWeights(await getUserWeights());
+        setWeights(await getUserWeights(logout));
       } catch (error) {
         setError(error);
       } finally {
@@ -24,18 +24,19 @@ export function Dashboard() {
       }
     };
     fetchData();
-  }, []);
+  }, [logout]);
 
   function addNewWeight(event) {
     event.preventDefault();
     const sendData = async () => {
       try {
-        postNewWeight(weightRef.current.value);
+        postNewWeight(weightRef.current.value, logout);
       } catch (err) {
         setPostingError(true);
       } finally {
         setPostingError(false);
         weightRef.current.value = '';
+        setWeights(await getUserWeights(logout));
       }
     };
     sendData();
@@ -76,7 +77,7 @@ export function Dashboard() {
         <table>
           <thead>
             <tr>
-              <th>Datum</th>
+              <th>Eintragszeit</th>
               <th>Gewicht</th>
             </tr>
           </thead>
@@ -85,8 +86,12 @@ export function Dashboard() {
               return (
                 <tr key={entry.entry_id}>
                   <td>
-                    {new Date(entry.creation_time).toLocaleDateString('de-DE', {
-                      dateStyle: 'short',
+                    {new Date(entry.creation_time).toLocaleString('de-DE', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
                     })}
                   </td>
                   <td>{entry.weight} kg</td>

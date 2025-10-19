@@ -7,13 +7,13 @@ export function Kontakt() {
   const titleRef = useRef(null);
   const bodyRef = useRef(null);
   const [postingError, setPostingError] = useState(null);
-  const { user } = useAuth();
+  const { logout } = useAuth();
 
   function sendMessage(event) {
     event.preventDefault();
     const sendData = async () => {
       try {
-        postMessage(titleRef.current.value, bodyRef.current.value);
+        postMessage(titleRef.current.value, bodyRef.current.value, logout);
       } catch (err) {
         setPostingError(true);
       } finally {

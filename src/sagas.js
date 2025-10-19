@@ -12,8 +12,7 @@ export function* postLoginSaga(action) {
     action.payload.onSuccess(response);
     yield put(setUserInfo(response));
   } catch (err) {
-    // TODO: Signalize error
-    console.log(err);
+    action.payload.onFailure();
   }
 }
 
