@@ -1,12 +1,18 @@
 import './App.css';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
-import { Dashboard } from './Dashboard';
-import { UeberUns } from './UeberUns';
-import { Kontakt } from './Kontakt';
-import { Login } from './Login';
+import { lazy } from 'react';
+// import { Dashboard } from './Dashboard';
+// import { UeberUns } from './UeberUns';
+// import { Kontakt } from './Kontakt';
+// import { Login } from './Login';
 import { AuthProvider } from './AuthProvider';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Logout } from './Logout';
+
+const Dashboard = lazy((load) => import('./Dashboard.js'));
+const UeberUns = lazy((load) => import('./UeberUns.js'));
+const Kontakt = lazy((load) => import('./Kontakt.js'));
+const Login = lazy((load) => import('./Login.js'));
 
 function App() {
   return (

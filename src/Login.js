@@ -1,15 +1,16 @@
 import './Login.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-export function Login() {
+export default function Login() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const { login } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loginFailed, setLoginFailed] = useState(false);
 
   function attemptLogin(event) {
     event.preventDefault();
@@ -22,6 +23,9 @@ export function Login() {
         onSuccess: (loginData) => {
           login(loginData.username);
           navigate('/');
+        },
+        onFailure: () => {
+          setLoginFailed(true);
         },
       },
     });
@@ -38,6 +42,7 @@ export function Login() {
         <button className="button" onClick={attemptLogin}>
           Login
         </button>
+        {loginFailed ? <div>Emailadresse oder Passwort ist inkorrekt</div> : <></>}
       </form>
     </div>
   );

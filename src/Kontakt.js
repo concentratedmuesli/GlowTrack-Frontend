@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { postMessage } from './API';
 
-export function Kontakt() {
+export default function Kontakt() {
   const titleRef = useRef(null);
   const bodyRef = useRef(null);
   const [postingError, setPostingError] = useState(null);

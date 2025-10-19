@@ -1,6 +1,6 @@
 import './UeberUns.css';
 
-export function UeberUns() {
+export default function UeberUns() {
   return (
     <div className="card">
       <div className="cardContent">

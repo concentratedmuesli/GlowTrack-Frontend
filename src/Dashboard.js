@@ -4,7 +4,7 @@ import { useAuth } from './AuthProvider';
 import { getUserWeights, postNewWeight } from './API';
 import { useSelector } from 'react-redux';
 
-export function Dashboard() {
+export default function Dashboard() {
   const [weights, setWeights] = useState(null);
   const [error, setError] = useState(null);
   const [postingError, setPostingError] = useState(null);
