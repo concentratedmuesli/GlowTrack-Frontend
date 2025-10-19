@@ -66,14 +66,14 @@ export default function Dashboard() {
         ) : (
           <h1>Hallo,</h1>
         )}
-        <h2 className="cardHeader">Was ist dein Gewicht heute?</h2>
+        <h2>Was ist dein Gewicht heute?</h2>
         <div className="inputContainer">
           <input className="input" ref={weightRef} />
           <button className="checkmarkButton" onClick={addNewWeight}>
             {'\u2713'}
           </button>
         </div>
-        <h2 className="cardHeader">Dein Gewichtsverlauf</h2>
+        <h2>Dein Gewichtsverlauf</h2>
         <table>
           <thead>
             <tr>

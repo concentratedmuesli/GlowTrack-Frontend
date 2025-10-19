@@ -27,7 +27,7 @@ export default function Kontakt() {
 
   return (
     <div className="card">
-      <h2 className="cardHeader">Kontakt</h2>
+      <h2>Kontakt</h2>
       <form className="cardContent">
         <label className="label">Betreff</label>
         <input ref={titleRef} className="input" />
