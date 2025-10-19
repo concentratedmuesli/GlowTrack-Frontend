@@ -43,14 +43,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/ueber-uns"
-            element={
-              <ProtectedRoute>
-                <UeberUns />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/ueber-uns" element={<UeberUns />} />
           <Route
             path="/kontakt"
             element={
