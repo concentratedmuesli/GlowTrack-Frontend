@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [weights, setWeights] = useState(null);
   const [error, setError] = useState(null);
   const [postingError, setPostingError] = useState(null);
+  const [valueError, setValueError] = useState(false);
   const [loading, setLoading] = useState(true);
   const weightRef = useRef(null);
   const { logout } = useAuth();
@@ -29,6 +30,16 @@ export default function Dashboard() {
 
   function addNewWeight(event) {
     event.preventDefault();
+    setValueError(false);
+    if (
+      weightRef.current.value.trim().length === 0 ||
+      isNaN(weightRef.current.value) ||
+      weightRef.current.value < 30 ||
+      weightRef.current.value > 350
+    ) {
+      setValueError(true);
+      return;
+    }
     const sendData = async () => {
       try {
         postNewWeight(weightRef.current.value, logout);
@@ -46,7 +57,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div className="card">
-        <p>Loading...</p>
+        <p>Lädt...</p>
       </div>
     );
   }
@@ -68,49 +79,68 @@ export default function Dashboard() {
         type="website"
       />
 
-    <div className="card">
-      <div className="cardContent">
-        {userInfo.value.payload && userInfo.value.payload.username ? (
-          <h1>Hallo, {userInfo.value.payload.username}! </h1>
-        ) : (
-          <h1>Hallo,</h1>
-        )}
-        <h2>Was ist dein Gewicht heute?</h2>
-        <div className="inputContainer">
-          <input className="input" ref={weightRef} />
-          <button className="checkmarkButton" onClick={addNewWeight}>
-            {'\u2713'}
-          </button>
-          {postingError ? <div>Dein Gewicht konnte nicht gespeichert werden!</div> : <></>}
+      <div className="card">
+        <div className="cardContent">
+          {userInfo.value.payload && userInfo.value.payload.username ? (
+            <h1>Hallo, {userInfo.value.payload.username}! </h1>
+          ) : (
+            <h1>Hallo,</h1>
+          )}
+          <h2>
+            <label htmlFor="weightInput">Was ist dein Gewicht heute?</label>
+          </h2>
+          <div className="inputContainer">
+            <div className="input">
+              <input id="weightInput" className="input" ref={weightRef} />
+              <span>kg</span>
+            </div>
+            <button
+              aria-label="gewicht speichern"
+              className="checkmarkButton"
+              onClick={addNewWeight}
+            >
+              {'\u2713'}
+            </button>
+          </div>
+          {postingError ? (
+            <div>Dein Gewicht konnte nicht gespeichert werden!</div>
+          ) : (
+            <></>
+          )}
+          {valueError ? (
+            <div>Die Eingabe muss eine Zahl zwischen 30 und 350 sein.</div>
+          ) : (
+            <></>
+          )}
+          <h2>Dein Gewichtsverlauf</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Eintragszeit</th>
+                <th>Gewicht</th>
+              </tr>
+            </thead>
+            <tbody>
+              {weights.map((entry) => {
+                return (
+                  <tr key={entry.entry_id}>
+                    <td>
+                      {new Date(entry.creation_time).toLocaleString('de-DE', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </td>
+                    <td>{entry.weight} kg</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-        <h2>Dein Gewichtsverlauf</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Eintragszeit</th>
-              <th>Gewicht</th>
-            </tr>
-          </thead>
-          <tbody>
-            {weights.map((entry) => {
-              return (
-                <tr key={entry.entry_id}>
-                  <td>
-                    {new Date(entry.creation_time).toLocaleString('de-DE', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </td>
-                  <td>{entry.weight} kg</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
       </div>
-    </div>
+    </>
   );
 }
