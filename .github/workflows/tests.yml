@@ -1,0 +1,23 @@
+name: Node.js CI
+
+on:
+    push:
+        branches: [master, develop]
+    pull_request:
+        branches: [master, develop]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [22.17.x]
+
+        steps:
+          - uses: actions/checkout@v5
+          - uses: actions/setup-node@v6
+            with:
+              node-version: 22
+          - run: npm ci
+          - run: npm run test
