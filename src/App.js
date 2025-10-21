@@ -1,13 +1,10 @@
 import './App.css';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
-// import { Dashboard } from './Dashboard';
-// import { UeberUns } from './UeberUns';
-// import { Kontakt } from './Kontakt';
-// import { Login } from './Login';
+import { lazy, Suspense } from 'react';
 import { AuthProvider } from './AuthProvider';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Logout } from './Logout';
+import { Loading } from './Loading.js';
 
 const Dashboard = lazy((load) => import('./Dashboard.js'));
 const UeberUns = lazy((load) => import('./UeberUns.js'));
@@ -40,32 +37,36 @@ function App() {
         </NavLink>
       </nav>
       <main>
-        <AuthProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/ueber-uns" element={<UeberUns />} />
-            <Route
-              path="/kontakt"
-              element={
-                <ProtectedRoute>
-                  <Kontakt />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-          </Routes>
-        </AuthProvider>
+        <Suspense fallback={<Loading />}>
+          <AuthProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/ueber-uns" element={<UeberUns />} />
+              <Route
+                path="/kontakt"
+                element={
+                  <ProtectedRoute>
+                    <Kontakt />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+            </Routes>
+          </AuthProvider>
+        </Suspense>
       </main>
     </BrowserRouter>
   );
 }
+
+// TODO: check if the suspense is doing anything
 
 export default App;
