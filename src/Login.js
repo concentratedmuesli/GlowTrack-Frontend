@@ -42,7 +42,11 @@ export default function Login() {
         <button className="button" onClick={attemptLogin}>
           Login
         </button>
-        {loginFailed ? <div>Emailadresse oder Passwort ist inkorrekt</div> : <></>}
+        {loginFailed ? (
+          <div>Emailadresse oder Passwort ist inkorrekt</div>
+        ) : (
+          <></>
+        )}
       </form>
     </div>
   );
