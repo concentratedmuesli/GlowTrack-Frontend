@@ -1,7 +1,7 @@
 import './Login.css';
 import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 
 export default function Login() {
