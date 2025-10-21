@@ -5,13 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const helmetContext = {};
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <HelmetProvider context={helmetContext}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

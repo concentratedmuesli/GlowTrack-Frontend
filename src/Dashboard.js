@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useAuth } from './AuthProvider';
 import { getUserWeights, postNewWeight } from './API';
 import { useSelector } from 'react-redux';
+import SEO from './SEO';
 
 export default function Dashboard() {
   const [weights, setWeights] = useState(null);
@@ -59,6 +60,14 @@ export default function Dashboard() {
   }
 
   return (
+    <>
+      <SEO
+        title="Komm auf dein Wohlfühlgewicht"
+        description="Behalte dein Gewicht mühelos im Blick mit GlowTrack."
+        name="GlowTrack"
+        type="website"
+      />
+
     <div className="card">
       <div className="cardContent">
         {userInfo.value.payload && userInfo.value.payload.username ? (
