@@ -43,7 +43,7 @@
 }
 
 .checkmarkButton {
-  background-color: #D16B8F;
+  background-color: #C54471;
   color: white;
   border: none;
   margin-top: 10px;
@@ -57,11 +57,11 @@
 }
 
 .checkmarkButton:hover {
-  background-color: #F8D7DA
+  background-color: #9C3056
 }
 
 .checkmarkButton:active {
-  background-color: #D16B8F
+  background-color: #C54471
 }
 
 th {

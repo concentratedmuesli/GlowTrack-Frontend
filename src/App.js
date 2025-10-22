@@ -24,7 +24,7 @@ function App() {
         <NavLink to="/kontakt" className="navHeader">
           Kontakt
         </NavLink>
-        <NavLink to="/logout" className="navHeader">
+        <NavLink to="/logout" className="navHeader" aria-label="Ausloggen">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

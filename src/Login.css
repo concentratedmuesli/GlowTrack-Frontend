@@ -36,7 +36,7 @@
 }
 
 .button {
-  background-color: #D16B8F;
+  background-color: #C54471;
   color: white;
   border: none;
   padding: 5px;
@@ -51,11 +51,11 @@
 
 
 .button:hover{
-  background-color: #F8D7DA
+  background-color: #9C3056
 }
 
 .button:active{
-  background-color: #D16B8F
+  background-color: #C54471
 }
 
 @media (max-width: 992px) {
