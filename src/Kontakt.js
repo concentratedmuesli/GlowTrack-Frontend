@@ -2,6 +2,7 @@ import './Kontakt.css';
 import { useRef, useState } from 'react';
 import { postMessage } from './API';
 import { useAuth } from './AuthProvider';
+import SEO from './SEO';
 
 export default function Kontakt() {
   const titleRef = useRef(null);
@@ -46,29 +47,41 @@ export default function Kontakt() {
   }
 
   return (
-    <div className="card">
-      <h2>Kontakt</h2>
-      <form className="cardContent">
-        <label htmlFor="title" className="label">Betreff</label>
-        <input id="title" ref={titleRef} className="input" />
-        {missingTitle ? <div>Das Betreff kann nicht leer sein.</div> : <></>}
-        <label htmlFor='body' className="label">Nachricht</label>
-        <textarea id="body" ref={bodyRef} rows={5} className="input" />
-        {missingBody ? <div>Die Nachricht kann nicht leer sein.</div> : <></>}
-        <button className="button" onClick={sendMessage}>
-          Schicken
-        </button>
-        {postingError ? (
-          <div>Deine Nachricht konnte nicht geschickt werden!</div>
-        ) : (
-          <></>
-        )}
-        {postingSuccess ? (
-          <div>Deine Nachricht wurde erfolgreich gesendet!</div>
-        ) : (
-          <></>
-        )}
-      </form>
-    </div>
+    <>
+      <SEO
+        title="Kontakt – GlowTrack, deine Gewichtsverlaufs-App"
+        description="Behalte dein Gewicht mühelos im Blick mit GlowTrack. Hast du eine Frage? Schreib uns eine Nachricht!"
+        name="GlowTrack"
+        type="website"
+      />
+      <div className="card">
+        <h2>Kontakt</h2>
+        <form className="cardContent">
+          <label htmlFor="title" className="label">
+            Betreff
+          </label>
+          <input id="title" ref={titleRef} className="input" />
+          {missingTitle ? <div>Das Betreff kann nicht leer sein.</div> : <></>}
+          <label htmlFor="body" className="label">
+            Nachricht
+          </label>
+          <textarea id="body" ref={bodyRef} rows={5} className="input" />
+          {missingBody ? <div>Die Nachricht kann nicht leer sein.</div> : <></>}
+          <button className="button" onClick={sendMessage}>
+            Schicken
+          </button>
+          {postingError ? (
+            <div>Deine Nachricht konnte nicht geschickt werden!</div>
+          ) : (
+            <></>
+          )}
+          {postingSuccess ? (
+            <div>Deine Nachricht wurde erfolgreich gesendet!</div>
+          ) : (
+            <></>
+          )}
+        </form>
+      </div>
+    </>
   );
 }

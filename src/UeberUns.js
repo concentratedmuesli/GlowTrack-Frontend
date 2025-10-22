@@ -1,7 +1,15 @@
 import './UeberUns.css';
+import SEO from './SEO';
 
 export default function UeberUns() {
   return (
+    <>
+          <SEO
+            title="Über uns – GlowTrack, deine Gewichtsverlaufs‑App"
+            description="Behalte dein Gewicht mühelos im Blick mit GlowTrack. Lern jetzt mehr über unser Team und unsere Ziele."
+            name="GlowTrack"
+            type="website"
+          />
     <div className="card">
       <div className="cardContent">
       <h2>Wer wir sind</h2>
@@ -28,5 +36,6 @@ export default function UeberUns() {
       </p>
     </div>
     </div>
+  </>
   );
 }

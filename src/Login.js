@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
+import SEO from './SEO';
 
 export default function Login() {
   const emailRef = useRef(null);
@@ -32,22 +33,39 @@ export default function Login() {
   }
 
   return (
-    <div className="card">
-      <h2>Login</h2>
-      <form className="loginForm">
-        <label className="label">Emailadresse</label>
-        <input className="input" ref={emailRef} />
-        <label className="label">Passwort</label>
-        <input type="password" className="input" ref={passwordRef} />
-        <button className="button" onClick={attemptLogin}>
-          Login
-        </button>
-        {loginFailed ? (
-          <div>Emailadresse oder Passwort ist inkorrekt</div>
-        ) : (
-          <></>
-        )}
-      </form>
-    </div>
+    <>
+      <SEO
+        title="Login – GlowTrack, deine Gewichtsverlaufs‑App"
+        description="Behalte dein Gewicht mühelos im Blick mit GlowTrack. Logg dich ein, um deinen Gewichtsverlauf zu sehen."
+        name="GlowTrack"
+        type="website"
+      />
+      <div className="card">
+        <h2>Login</h2>
+        <form className="loginForm">
+          <label htmlFor="email" className="label">
+            Emailadresse
+          </label>
+          <input id="email" className="input" ref={emailRef} />
+          <label htmlFor="password" className="label">
+            Passwort
+          </label>
+          <input
+            id="password"
+            type="password"
+            className="input"
+            ref={passwordRef}
+          />
+          <button className="button" onClick={attemptLogin}>
+            Login
+          </button>
+          {loginFailed ? (
+            <div>Emailadresse oder Passwort ist inkorrekt</div>
+          ) : (
+            <></>
+          )}
+        </form>
+      </div>
+    </>
   );
 }

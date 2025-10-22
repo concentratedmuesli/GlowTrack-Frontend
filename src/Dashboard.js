@@ -73,8 +73,8 @@ export default function Dashboard() {
   return (
     <>
       <SEO
-        title="Komm auf dein Wohlfühlgewicht"
-        description="Behalte dein Gewicht mühelos im Blick mit GlowTrack."
+        title="Dashboard – GlowTrack, deine Gewichtsverlaufs-App"
+        description="Behalte dein Gewicht mühelos im Blick mit GlowTrack. Trage jetzt dein heutiges Gewicht ein!"
         name="GlowTrack"
         type="website"
       />
