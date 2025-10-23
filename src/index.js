@@ -7,6 +7,10 @@ import store from './store';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 
+// Einstiegspunkt des React-Frontends für GlowTrack.
+// Redux-Store für globale State-Verwaltung
+// HelmetProvider für SEO (Meta-Tags, Titel)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const helmetContext = {};

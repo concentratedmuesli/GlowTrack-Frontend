@@ -1,6 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-export default function SEO({title, description, name, type}) {
+
+// Helmet setzt die die wichtigsten Meta-Tags für Suchmaschinen und soziale Medien
+
+export default function SEO({ title, description, name, type }) {
 return (
 <Helmet>
 <title>{title}</title>

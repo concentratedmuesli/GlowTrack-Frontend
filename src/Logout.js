@@ -10,8 +10,8 @@ export const Logout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    logout();
-    navigate('/login');
-    dispatch(removeUserInfo());
+    logout(); // Setzt AuthContext zurück
+    navigate('/login'); // Navigiert zum Login für erneuerte Anmeldung
+    dispatch(removeUserInfo()); // Leert Redux-Store
   }, [logout, navigate, dispatch]);
 };

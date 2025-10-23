@@ -16,6 +16,7 @@ export default function Kontakt() {
   function sendMessage(event) {
     event.preventDefault();
     setPostingSuccess(false);
+    // Client-Validierung
     if (titleRef.current.value.trim().length === 0) {
       setMissingTitle(true);
     } else {
@@ -89,6 +90,7 @@ export default function Kontakt() {
           ) : (
             <></>
           )}
+          {/* Erfolgmeldung */}
           {postingSuccess ? (
             <div className={styles.successMessage}>
               &#10003; Deine Nachricht wurde erfolgreich gesendet!

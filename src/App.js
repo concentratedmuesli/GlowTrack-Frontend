@@ -6,11 +6,16 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { Logout } from './Logout';
 import { Loading } from './Loading.js';
 
+// Seiten werden erst geladen, wenn sie wirklich benötigt werden.
+// Reduziert die initiale Bundle-Größe und beschleunigt den ersten Start
 const Dashboard = lazy((load) => import('./Dashboard.js'));
 const UeberUns = lazy((load) => import('./UeberUns.js'));
 const Kontakt = lazy((load) => import('./Kontakt.js'));
 const Login = lazy((load) => import('./Login.js'));
 
+// BrowserRouter: clientseitiges Routing
+// AuthProvider und Protected Route: nur registrierte Users können dahin navigieren
+// Suspense und Loading zeigen Ladeindikator, während Lazy-Komponenten nachgeladen werden
 function App() {
   return (
     <BrowserRouter>
@@ -70,7 +75,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-// TODO: check if the suspense is doing anything
 
 export default App;

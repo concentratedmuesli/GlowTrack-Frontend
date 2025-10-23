@@ -23,7 +23,7 @@ export default function Login() {
         // TODO: Explain why I did it like this.
         onSuccess: (loginData) => {
           login(loginData.username);
-          navigate('/');
+          navigate('/'); // Weiterleitung ins Dashboard
         },
         onFailure: () => {
           setLoginFailed(true);

@@ -1,5 +1,7 @@
-// TODO: navigate to login if anything return 401
+// fetch-Aufrufe für alle Endpunkte
 
+// Wirft bei HTTP-Fehlercodes (außer 401) einen Error
+// Bei 401 wird die übergebene onUnauthorized-Funktion aufgerufen (die den User ausloggt)
 async function fetchAndCheck(url, fetchParams, onUnauthorized) {
   const response = await fetch(url, fetchParams);
   if (!response.ok) {
@@ -14,6 +16,7 @@ async function fetchAndCheck(url, fetchParams, onUnauthorized) {
   return response;
 }
 
+// Gewichts-Endpunkte
 export const getUserWeights = async (onUnauthorized) => {
   const response = await fetchAndCheck(
     '/api/user-weights?number=100',
@@ -41,6 +44,7 @@ export const postNewWeight = async (userWeight, onUnauthorized) => {
   );
 };
 
+// Login
 export const postUserLogin = async (email, password) => {
   const response = await fetchAndCheck(
     '/api/login',
@@ -61,6 +65,7 @@ export const postUserLogin = async (email, password) => {
   return await response.json();
 };
 
+// Kontakt-Formular
 export const postMessage = async (title, body, onUnauthorized) => {
   await fetchAndCheck(
     '/api/user-messages',

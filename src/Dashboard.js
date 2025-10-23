@@ -15,6 +15,7 @@ export default function Dashboard() {
   const { logout } = useAuth();
   const userInfo = useSelector((state) => state.userInfo);
 
+  // Initialer Datenabruf
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,9 +29,11 @@ export default function Dashboard() {
     fetchData();
   }, [logout]);
 
+  //Handler für neuen Gewichtseintrag
   function addNewWeight(event) {
     event.preventDefault();
     setValueError(false);
+    // Clientside-Validierung
     if (
       weightRef.current.value.trim().length === 0 ||
       isNaN(weightRef.current.value) ||
@@ -48,7 +51,7 @@ export default function Dashboard() {
       } finally {
         setPostingError(false);
         weightRef.current.value = '';
-        setWeights(await getUserWeights(logout));
+        setWeights(await getUserWeights(logout)); // Aktualisiert die Gewichtsliste
       }
     };
     sendData();
@@ -107,6 +110,7 @@ export default function Dashboard() {
               {'\u2713'}
             </button>
           </div>
+          {/* Fehlermeldungen */}
           {postingError ? (
             <div className={styles.errorMessage}>
               &#9888; Dein Gewicht konnte nicht gespeichert werden!
@@ -122,6 +126,7 @@ export default function Dashboard() {
             <></>
           )}
           <h2>Dein Gewichtsverlauf</h2>
+          {/* Gewichtsverlauf-Tabelle */}
           <table>
             <thead>
               <tr>
