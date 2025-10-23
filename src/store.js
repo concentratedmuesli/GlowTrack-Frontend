@@ -11,7 +11,7 @@ export default configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['LOGIN_REQUEST']
+        ignoredActions: ['LOGIN_REQUEST'],
       },
     }).concat(sagaMiddleware),
 });
