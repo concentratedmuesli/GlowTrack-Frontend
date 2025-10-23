@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './AuthProvider';
@@ -14,17 +14,21 @@ const Login = lazy((load) => import('./Login.js'));
 function App() {
   return (
     <BrowserRouter>
-      <nav className="nav">
-        <NavLink to="/" className="logo navHeader">
+      <nav className={styles.nav}>
+        <NavLink to="/" className={`${styles.logo} ${styles.navHeader}`}>
           GlowTrack
         </NavLink>
-        <NavLink to="/ueber-uns" className="navHeader">
+        <NavLink to="/ueber-uns" className={styles.navHeader}>
           Über uns
         </NavLink>
-        <NavLink to="/kontakt" className="navHeader">
+        <NavLink to="/kontakt" className={styles.navHeader}>
           Kontakt
         </NavLink>
-        <NavLink to="/logout" className="navHeader" aria-label="Ausloggen">
+        <NavLink
+          to="/logout"
+          className={styles.navHeader}
+          aria-label="Ausloggen"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

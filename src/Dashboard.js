@@ -1,4 +1,4 @@
-import './Dashboard.css';
+import styles from './Dashboard.module.css';
 import { useEffect, useState, useRef } from 'react';
 import { useAuth } from './AuthProvider';
 import { getUserWeights, postNewWeight } from './API';
@@ -56,7 +56,7 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="card">
+      <div className={styles.card}>
         <p>Lädt...</p>
       </div>
     );
@@ -64,7 +64,7 @@ export default function Dashboard() {
 
   if (error) {
     return (
-      <div className="card">
+      <div className={styles.card}>
         <p>An error occured: {error.message}</p>
       </div>
     );
@@ -79,8 +79,9 @@ export default function Dashboard() {
         type="website"
       />
 
-      <div className="card">
-        <div className="cardContent">
+      <div className={styles.card}>
+        <div className={styles.cardContent}>
+          {/* Persönliche Begrüßung */}
           {userInfo.value.payload && userInfo.value.payload.username ? (
             <h1>Hallo, {userInfo.value.payload.username}! </h1>
           ) : (
@@ -89,26 +90,34 @@ export default function Dashboard() {
           <h2>
             <label htmlFor="weightInput">Was ist dein Gewicht heute?</label>
           </h2>
-          <div className="inputContainer">
-            <div className="input">
-              <input id="weightInput" className="input" ref={weightRef} />
+          <div className={styles.inputContainer}>
+            <div className={styles.input}>
+              <input
+                id="weightInput"
+                className={styles.input}
+                ref={weightRef}
+              />
               <span>kg</span>
             </div>
             <button
               aria-label="gewicht speichern"
-              className="checkmarkButton"
+              className={styles.checkmarkButton}
               onClick={addNewWeight}
             >
               {'\u2713'}
             </button>
           </div>
           {postingError ? (
-            <div>Dein Gewicht konnte nicht gespeichert werden!</div>
+            <div className={styles.errorMessage}>
+              &#9888; Dein Gewicht konnte nicht gespeichert werden!
+            </div>
           ) : (
             <></>
           )}
           {valueError ? (
-            <div>Die Eingabe muss eine Zahl zwischen 30 und 350 sein.</div>
+            <div className={styles.errorMessage}>
+              &#9888; Die Eingabe muss eine Zahl zwischen 30 und 350 sein.
+            </div>
           ) : (
             <></>
           )}

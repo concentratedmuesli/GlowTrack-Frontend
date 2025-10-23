@@ -1,4 +1,4 @@
-import './Login.css';
+import styles from './Login.module.css';
 import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { useNavigate } from 'react-router';
@@ -40,27 +40,34 @@ export default function Login() {
         name="GlowTrack"
         type="website"
       />
-      <div className="card">
-        <h2>Login</h2>
-        <form className="loginForm">
-          <label htmlFor="email" className="label">
+      <div className={styles.card}>
+        <h1>Login</h1>
+        <form className={styles.loginForm}>
+          <label htmlFor="email" className={styles.label}>
             Emailadresse
           </label>
-          <input id="email" className="input" ref={emailRef} />
+          <input
+            id="email"
+            data-testid="email"
+            className={styles.input}
+            ref={emailRef}
+          />
           <label htmlFor="password" className="label">
             Passwort
           </label>
           <input
             id="password"
             type="password"
-            className="input"
+            className={styles.input}
             ref={passwordRef}
           />
-          <button className="button" onClick={attemptLogin}>
+          <button className={styles.button} onClick={attemptLogin}>
             Login
           </button>
           {loginFailed ? (
-            <div>Emailadresse oder Passwort ist inkorrekt</div>
+            <div className={styles.errorMessage}>
+              &#9888; Emailadresse oder Passwort ist inkorrekt
+            </div>
           ) : (
             <></>
           )}

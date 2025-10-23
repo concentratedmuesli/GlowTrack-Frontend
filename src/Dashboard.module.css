@@ -8,6 +8,7 @@
   justify-content: space-around;
   align-items: center;
   box-shadow: 10px 10px 42px -18px rgba(0, 0, 0, 0.75);
+  width: 50vw;
 }
 
 .cardContent {
@@ -17,24 +18,27 @@
   width: 60%;
 }
 
-.inputContainer  {
-  display:flex;
+.inputContainer {
+  display: flex;
   flex-direction: row;
   justify-content: start;
-  width: 100%
+  width: 100%;
 }
 
-
 .input {
-  background-color: #F8D7DA;
+  background-color: #f8d7da;
   border: none;
   padding: 5px;
   font-size: 1.2rem;
   border-radius: 7px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+}
+
+.errorMessage {
+  color: #da0028;
 }
 
 .label {
@@ -43,32 +47,55 @@
   font-size: 1.2rem;
 }
 
-.button {
-  background-color: #C54471;
+.checkmarkButton {
+  background-color: #c54471;
   color: white;
   border: none;
-  padding: 5px;
   margin-top: 10px;
+  margin-left: 5px;
   font-size: 1.2rem;
   border-radius: 7px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 }
 
-
-.button:hover{
-  background-color: #9C3056
+.checkmarkButton:hover {
+  background-color: #9c3056;
+  transform: scaleY(1.05);
 }
 
-.button:active{
-  background-color: #C54471
+.checkmarkButton:active {
+  background-color: #c54471;
 }
 
-@media (max-width: 992px) {
-.card {
-  min-width:90vw;
-  flex-wrap: wrap;
+th {
+  font-weight: 400;
+  text-align: justify;
 }
+
+@media (max-width: 767px) {
+  .card {
+    width: 85vw;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .card {
+    width: 50vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 566px) {
+  .input {
+    max-width: 70%;
+  }
 }

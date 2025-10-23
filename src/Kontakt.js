@@ -1,4 +1,4 @@
-import './Kontakt.css';
+import styles from './Kontakt.module.css';
 import { useRef, useState } from 'react';
 import { postMessage } from './API';
 import { useAuth } from './AuthProvider';
@@ -54,29 +54,45 @@ export default function Kontakt() {
         name="GlowTrack"
         type="website"
       />
-      <div className="card">
-        <h2>Kontakt</h2>
-        <form className="cardContent">
-          <label htmlFor="title" className="label">
+      <div className={styles.card}>
+        <h1>Kontakt</h1>
+        <form className={styles.cardContent}>
+          <label htmlFor="title" className={styles.label}>
             Betreff
           </label>
-          <input id="title" ref={titleRef} className="input" />
-          {missingTitle ? <div>Das Betreff kann nicht leer sein.</div> : <></>}
-          <label htmlFor="body" className="label">
+          <input id="title" ref={titleRef} className={styles.input} />
+          {missingTitle ? (
+            <div className={styles.errorMessage}>
+              &#9888; Das Betreff kann nicht leer sein.
+            </div>
+          ) : (
+            <></>
+          )}
+          <label htmlFor="body" className={styles.label}>
             Nachricht
           </label>
-          <textarea id="body" ref={bodyRef} rows={5} className="input" />
-          {missingBody ? <div>Die Nachricht kann nicht leer sein.</div> : <></>}
-          <button className="button" onClick={sendMessage}>
+          <textarea id="body" ref={bodyRef} rows={5} className={styles.input} />
+          {missingBody ? (
+            <div className={styles.errorMessage}>
+              &#9888; Die Nachricht kann nicht leer sein.
+            </div>
+          ) : (
+            <></>
+          )}
+          <button className={styles.button} onClick={sendMessage}>
             Schicken
           </button>
           {postingError ? (
-            <div>Deine Nachricht konnte nicht geschickt werden!</div>
+            <div className={styles.errorMessage}>
+              &#9888; Deine Nachricht konnte nicht geschickt werden!
+            </div>
           ) : (
             <></>
           )}
           {postingSuccess ? (
-            <div>Deine Nachricht wurde erfolgreich gesendet!</div>
+            <div className={styles.successMessage}>
+              &#10003; Deine Nachricht wurde erfolgreich gesendet!
+            </div>
           ) : (
             <></>
           )}
