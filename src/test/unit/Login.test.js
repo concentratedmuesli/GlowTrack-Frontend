@@ -15,11 +15,11 @@ jest.mock('react-router', () => ({
   useNavigate: () => mockedNavigate,
 }))
 
-// const mockedUseDispatch = jest.fn()
-// jest.mock('react-redux', () => ({
-//   ...jest.requireActual('react-redux'),
-//   useDispatch: () => mockedUseDispatch,
-// }))
+const mockedUseDispatch = jest.fn()
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useDispatch: () => mockedUseDispatch,
+}))
 
 function renderLoginComponent() {
   render(
@@ -38,27 +38,27 @@ describe('Testing the user profile', () => {
     renderLoginComponent()
   })
 
-  // test('error is shown if login data is incorrect', async () => {
-  //   renderLoginComponent()
-  //   const loginButton = screen.getByRole('button', { name: /Login/i })
-  //   expect(loginButton).toBeInTheDocument()
-  //   mockedUseDispatch.mockImplementationOnce((action) => {
-  //     action.payload.onFailure()
-  //   })
-  //   fireEvent.click(loginButton)
-  //   expect(
-  //     await screen.findByText(/Emailadresse oder Passwort ist inkorrekt/)
-  //   ).toBeInTheDocument()
-  // })
+  test('error is shown if login data is incorrect', async () => {
+    renderLoginComponent()
+    const loginButton = screen.getByRole('button', { name: /Login/i })
+    expect(loginButton).toBeInTheDocument()
+    mockedUseDispatch.mockImplementationOnce((action) => {
+      action.payload.onFailure()
+    })
+    fireEvent.click(loginButton)
+    expect(
+      await screen.findByText(/Emailadresse oder Passwort ist inkorrekt/)
+    ).toBeInTheDocument()
+  })
 
-  // test('login page navigates to root on correct login', async () => {
-  //   renderLoginComponent()
-  //   const loginButton = screen.getByRole('button', { name: /Login/i })
-  //   expect(loginButton).toBeInTheDocument()
-  //   mockedUseDispatch.mockImplementationOnce((action) => {
-  //     action.payload.onSuccess({ username: 'test-username' })
-  //   })
-  //   fireEvent.click(loginButton)
-  //   expect(mockedNavigate).toHaveBeenCalledWith('/')
-  // })
+  test('login page navigates to root on correct login', async () => {
+    renderLoginComponent()
+    const loginButton = screen.getByRole('button', { name: /Login/i })
+    expect(loginButton).toBeInTheDocument()
+    mockedUseDispatch.mockImplementationOnce((action) => {
+      action.payload.onSuccess({ username: 'test-username' })
+    })
+    fireEvent.click(loginButton)
+    expect(mockedNavigate).toHaveBeenCalledWith('/')
+  })
 })
