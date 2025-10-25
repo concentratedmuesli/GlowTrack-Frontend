@@ -3,25 +3,22 @@ import Login from '../../Login';
 import store from '../../store';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
-import { MemoryRouter } from 'react-router';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { createRoutesStub } from 'react-router';
 
 const helmetContext = {};
 
-const mockedNavigate = jest.fn();
-jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router'),
-  useNavigate: () => mockedNavigate,
-}));
+const Stub = createRoutesStub([
+  { path: '/login', Component: Login },
+  { path: '/', Component: () => <div>Dashboard</div> },
+]);
 
 function renderLoginComponent() {
   render(
     <Provider store={store}>
       <HelmetProvider context={helmetContext}>
         <AuthProvider>
-          <MemoryRouter initialEntries={['/']}>
-            <Login />
-          </MemoryRouter>
+          <Stub initialEntries={['/login']} />
         </AuthProvider>
       </HelmetProvider>
     </Provider>
@@ -62,6 +59,8 @@ describe('Testing the user profile', () => {
     const password = screen.getByTestId('password');
     fireEvent.change(password, { target: { value: 'password' } });
     fireEvent.click(loginButton);
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/'));
+    await waitFor(() => {
+      expect(screen.getByText('Dashboard')).toBeInTheDocument();
+    });
   });
 });
