@@ -2,25 +2,66 @@ import { AuthProvider } from '../../AuthProvider';
 import Login from '../../Login';
 import store from '../../store';
 import { Provider } from 'react-redux';
-import { render } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { MemoryRouter } from 'react-router';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 const helmetContext = {};
+
+const mockedNavigate = jest.fn();
+jest.mock('react-router', () => ({
+  ...jest.requireActual('react-router'),
+  useNavigate: () => mockedNavigate,
+}));
+
+function renderLoginComponent() {
+  render(
+    <Provider store={store}>
+      <HelmetProvider context={helmetContext}>
+        <AuthProvider>
+          <MemoryRouter initialEntries={['/']}>
+            <Login />
+          </MemoryRouter>
+        </AuthProvider>
+      </HelmetProvider>
+    </Provider>
+  );
+}
 
 describe('Testing the user profile', () => {
   test('check the login component renders', () => {
     // Testet, dass die Komponente ohne mocking von useNavigate rendert.
-    render(
-      <Provider store={store}>
-        <HelmetProvider context={helmetContext}>
-          <AuthProvider>
-            <MemoryRouter initialEntries={['/']}>
-              <Login />
-            </MemoryRouter>
-          </AuthProvider>
-        </HelmetProvider>
-      </Provider>
-    );
+    renderLoginComponent();
+  });
+
+  test('error is shown if login data is incorrect', async () => {
+    renderLoginComponent();
+    const loginButton = screen.getByRole('button', { name: /Login/i });
+    expect(loginButton).toBeInTheDocument();
+    fireEvent.click(loginButton);
+    expect(
+      await screen.findByText(/Emailadresse oder Passwort ist inkorrekt/)
+    ).toBeInTheDocument();
+  });
+
+  test('login page navigates to root on correct login', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        username: 'Liz',
+        email: 'liz@abeth.com',
+        birthdate: '1995-10-23',
+      }),
+    });
+    renderLoginComponent();
+    const loginButton = screen.getByRole('button', { name: /Login/i });
+    expect(loginButton).toBeInTheDocument();
+    const email = screen.getByTestId('email');
+    fireEvent.change(email, { target: { value: 'liz@abeth.com' } });
+    const password = screen.getByTestId('password');
+    fireEvent.change(password, { target: { value: 'password' } });
+    fireEvent.click(loginButton);
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/'));
   });
 });
