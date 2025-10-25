@@ -20,7 +20,10 @@ export default function Login() {
       payload: {
         email: emailRef.current.value,
         password: passwordRef.current.value,
-        // TODO: Explain why I did it like this.
+        // Das Ziel ist, postUserLogin in einer Saga auszuführen.
+        // Wenn das login erfolgreich war, soll zum Dashboard navigiert werden.
+        // In einer Saga kann man kein useAuth oder useNavigate aufrufen.
+        // Also müssen diese Operationen hier weitergegeben werden.
         onSuccess: () => {
           login();
           navigate('/'); // Weiterleitung ins Dashboard

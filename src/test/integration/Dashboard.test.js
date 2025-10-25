@@ -45,7 +45,7 @@ describe('Testing the dashboard', () => {
     expect(await screen.findByText(/79 kg/)).toBeInTheDocument();
   });
 
-  test('check weights can be added', async () => {
+  test('check that a weight can be added and appears in the dashboard', async () => {
     fetch.mockResolvedValueOnce({
       ok: true,
       json: async () => [

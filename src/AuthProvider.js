@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
+// Setzt Provider für loggedIn state, login und logout
 export const AuthContext = createContext();
 
 export function useAuth() {

@@ -5,6 +5,7 @@ const initialValue = {
   birthdate: null,
 };
 
+// Definiert ein Slice für die Daten über den User
 export const userInfoSlice = createSlice({
   name: 'userInfo',
   initialState: {

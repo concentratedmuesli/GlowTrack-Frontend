@@ -1,5 +1,3 @@
-// TODO: comment
-
 import { AuthProvider } from '../../AuthProvider'
 import Login from '../../Login'
 import store from '../../store'
@@ -15,6 +13,7 @@ jest.mock('react-router', () => ({
   useNavigate: () => mockedNavigate,
 }))
 
+// Um ein Unit-Test zu führen, werden Redux und Saga umgegangen
 const mockedUseDispatch = jest.fn()
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),

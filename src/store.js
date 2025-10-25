@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import userInfoReducer from './slice/usernameSlice';
 import rootSaga from './sagas';
 
+// Startet Redux mit Saga als Middleware
 const sagaMiddleware = createSagaMiddleware();
 export default configureStore({
   reducer: {
