@@ -45,7 +45,7 @@ export default function Dashboard() {
     }
     const sendData = async () => {
       try {
-        postNewWeight(weightRef.current.value, logout);
+        await postNewWeight(weightRef.current.value, logout);
       } catch (err) {
         setPostingError(true);
       } finally {
