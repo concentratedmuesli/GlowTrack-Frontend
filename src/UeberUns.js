@@ -15,26 +15,29 @@ export default function UeberUns() {
           <h1>Über uns</h1>
           <h2>Wer wir sind</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            GlowTrack ist eine intuitive App, die speziell für Frauen zwischen
+            18 und 35 Jahren entwickelt wurde, die ihr persönliches
+            Wohlfühlgewicht erreichen, halten oder verändern möchten. Unser Team
+            besteht aus erfahrenen Expertinnen und Experten aus den Bereichen
+            Ernährungswissenschaft, Psychologie, Fitness und App-Entwicklung.
+          </p>
+          <p>
+            Gemeinsam kombinieren wir fundiertes Fachwissen mit modernster
+            Technologie, um Frauen auf ihrem individuellen Weg zu begleiten,
+            ganz ohne Druck, sondern mit Motivation und einfacher Handhabung.
           </p>
           <h2>Unsere Mission</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Unsere Mission bei GlowTrack ist es, Frauen zu unterstützen, ihr
+            ganz persönliches Zielgewicht zu finden und sich in ihrem Körper
+            rundum wohlzufühlen. Wir glauben daran, dass jede Frau das Recht
+            hat, sich selbstbewusst und zufrieden zu fühlen, unabhängig von
+            äußeren Vorgaben.
           </p>
           <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            GlowTrack bietet eine unkomplizierte und motivierende Plattform, die
+            dabei hilft, Fortschritte sichtbar zu machen und den eigenen Weg zum
+            Wohlfühlgewicht nachhaltig zu begleiten.
           </p>
         </div>
       </div>
