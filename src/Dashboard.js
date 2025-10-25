@@ -97,6 +97,7 @@ export default function Dashboard() {
             <div className={styles.input}>
               <input
                 id="weightInput"
+                data-testid="weight"
                 className={styles.input}
                 ref={weightRef}
               />

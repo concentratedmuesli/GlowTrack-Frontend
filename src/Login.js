@@ -57,6 +57,7 @@ export default function Login() {
           </label>
           <input
             id="password"
+            data-testid="password"
             type="password"
             className={styles.input}
             ref={passwordRef}
