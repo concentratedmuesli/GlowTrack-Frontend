@@ -28,6 +28,8 @@
     "start": "set PORT=8000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:unit": "react-scripts test --silent src/test/unit/",
+    "test:integration": "react-scripts test --silent src/test/integration/",
     "eject": "react-scripts eject",
     "lint:fix": "eslint src/**/*.js --fix",
     "lint": "eslint src/**/*.js"
