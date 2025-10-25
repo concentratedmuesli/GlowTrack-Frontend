@@ -5,13 +5,15 @@ import { useAuth } from './AuthProvider';
 import { removeUserInfo } from './slice/usernameSlice';
 
 export const Logout = () => {
-  const { logout } = useAuth();
+  const { loggedIn, logout } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    logout(); // Setzt AuthContext zurück
+    if (loggedIn) {
+      logout(); // Setzt AuthContext zurück
+      dispatch(removeUserInfo()); // Leert Redux-Store
+    }
     navigate('/login'); // Navigiert zum Login für erneuerte Anmeldung
-    dispatch(removeUserInfo()); // Leert Redux-Store
-  }, [logout, navigate, dispatch]);
+  }, [loggedIn, logout, navigate, dispatch]);
 };

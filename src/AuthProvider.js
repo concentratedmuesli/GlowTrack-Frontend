@@ -6,28 +6,19 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-// TODO: see if i can remove the authprovider
-// TODO: and use only redux to check if the user is logged in
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(true);
 
-  const storedUsername = localStorage.getItem('username');
-  if (!user && storedUsername) {
-    setUser({ storedUsername });
-  }
-
-  const login = (user) => {
-    setUser({ user });
-    localStorage.setItem('username', user);
+  const login = () => {
+    setLoggedIn(true);
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('username');
+    setLoggedIn(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ loggedIn, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

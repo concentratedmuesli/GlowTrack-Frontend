@@ -21,8 +21,8 @@ export default function Login() {
         email: emailRef.current.value,
         password: passwordRef.current.value,
         // TODO: Explain why I did it like this.
-        onSuccess: (loginData) => {
-          login(loginData.username);
+        onSuccess: () => {
+          login();
           navigate('/'); // Weiterleitung ins Dashboard
         },
         onFailure: () => {

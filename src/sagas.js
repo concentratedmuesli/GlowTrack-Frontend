@@ -9,7 +9,7 @@ export function* postLoginSaga(action) {
       action.payload.email,
       action.payload.password
     );
-    action.payload.onSuccess(response);
+    action.payload.onSuccess();
     yield put(setUserInfo(response));
   } catch (err) {
     action.payload.onFailure();

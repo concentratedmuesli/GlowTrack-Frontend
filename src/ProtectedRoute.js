@@ -3,9 +3,9 @@ import { useLocation, Navigate } from 'react-router-dom';
 
 // Macht children nur für angemeldete Nutzer zugänglich
 export function ProtectedRoute({ children }) {
-  const { user } = useAuth();
+  const { loggedIn } = useAuth();
   const location = useLocation();
-  if (!user) {
+  if (!loggedIn) {
     return (
       <Navigate
         to="/login"
