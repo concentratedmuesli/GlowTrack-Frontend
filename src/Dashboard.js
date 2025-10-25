@@ -1,5 +1,5 @@
 import styles from './Dashboard.module.css';
-import { useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useState, useRef } from 'react';
 import { useAuth } from './AuthProvider';
 import { getUserWeights, postNewWeight } from './API';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const userInfo = useSelector((state) => state.userInfo);
 
   // Initialer Datenabruf
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchData = async () => {
       try {
         setWeights(await getUserWeights(logout));
