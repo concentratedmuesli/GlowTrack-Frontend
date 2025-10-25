@@ -1,6 +1,6 @@
-import { AuthProvider } from '../../AuthProvider';
-import Login from '../../Login';
-import store from '../../store';
+import { AuthProvider } from '../../authorization/AuthProvider';
+import Login from '../../authorization/Login';
+import store from '../../redux/store';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';

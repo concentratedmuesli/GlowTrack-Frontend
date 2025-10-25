@@ -1,5 +1,5 @@
 import styles from './UeberUns.module.css';
-import SEO from './SEO';
+import SEO from '../seo/SEO';
 
 export default function UeberUns() {
   return (

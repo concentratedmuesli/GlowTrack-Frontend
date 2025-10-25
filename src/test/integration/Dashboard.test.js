@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { MemoryRouter } from 'react-router';
-import { AuthProvider } from '../../AuthProvider';
-import store from '../../store';
+import { AuthProvider } from '../../authorization/AuthProvider';
+import store from '../../redux/store';
 
 global.fetch = jest.fn();
 

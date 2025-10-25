@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import userInfoReducer from './slice/usernameSlice';
-import rootSaga from './sagas';
+import userInfoReducer from '../slice/usernameSlice';
+import rootSaga from '../saga/sagas';
 
 // Startet Redux mit Saga als Middleware
 const sagaMiddleware = createSagaMiddleware();

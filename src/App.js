@@ -1,17 +1,17 @@
 import styles from './App.module.css';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { AuthProvider } from './AuthProvider';
-import { ProtectedRoute } from './ProtectedRoute';
-import { Logout } from './Logout';
+import { AuthProvider } from './authorization/AuthProvider';
+import { ProtectedRoute } from './authorization/ProtectedRoute';
+import { Logout } from './authorization/Logout';
 import { Loading } from './Loading.js';
 
 // Seiten werden erst geladen, wenn sie wirklich benötigt werden.
 // Reduziert die initiale Bundle-Größe und beschleunigt den ersten Start
-const Dashboard = lazy((load) => import('./Dashboard.js'));
-const UeberUns = lazy((load) => import('./UeberUns.js'));
-const Kontakt = lazy((load) => import('./Kontakt.js'));
-const Login = lazy((load) => import('./Login.js'));
+const Dashboard = lazy((load) => import('./dashboard/Dashboard.js'));
+const UeberUns = lazy((load) => import('./aboutus/UeberUns.js'));
+const Kontakt = lazy((load) => import('./contact/Kontakt.js'));
+const Login = lazy((load) => import('./authorization/Login.js'));
 
 // BrowserRouter: clientseitiges Routing
 // AuthProvider und Protected Route: nur registrierte Users können dahin navigieren

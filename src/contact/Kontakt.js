@@ -1,8 +1,8 @@
 import styles from './Kontakt.module.css';
 import { useRef, useState } from 'react';
-import { postMessage } from './API';
-import { useAuth } from './AuthProvider';
-import SEO from './SEO';
+import { postMessage } from '../backend/API';
+import { useAuth } from '../authorization/AuthProvider';
+import SEO from '../seo/SEO';
 
 export default function Kontakt() {
   const titleRef = useRef(null);

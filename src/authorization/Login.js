@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import SEO from './SEO';
+import SEO from '../seo/SEO';
 
 export default function Login() {
   const emailRef = useRef(null);

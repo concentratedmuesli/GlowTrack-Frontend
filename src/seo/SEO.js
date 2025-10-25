@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 // Helmet setzt die die wichtigsten Meta-Tags für Suchmaschinen und soziale Medien

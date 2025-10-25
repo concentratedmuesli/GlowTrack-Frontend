@@ -1,9 +1,9 @@
 import styles from './Dashboard.module.css';
 import { useLayoutEffect, useState, useRef } from 'react';
-import { useAuth } from './AuthProvider';
-import { getUserWeights, postNewWeight } from './API';
+import { useAuth } from '../authorization/AuthProvider';
+import { getUserWeights, postNewWeight } from '../backend/API';
 import { useSelector } from 'react-redux';
-import SEO from './SEO';
+import SEO from '../seo/SEO';
 
 export default function Dashboard() {
   const [weights, setWeights] = useState(null);
