@@ -5,7 +5,7 @@
 async function fetchAndCheck(url, fetchParams, onUnauthorized) {
   const response = await fetch(url, fetchParams);
   if (!response.ok) {
-    if (response.status === 401) {
+    if (response.status === 401 && onUnauthorized) {
       onUnauthorized();
       return;
     }
