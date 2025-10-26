@@ -8,6 +8,9 @@ export function useAuth() {
 }
 
 export const AuthProvider = ({ children }) => {
+  // Es wird angenommen, dass die Userin eingeloggt ist,
+  // wenn nicht wird sie ausgelogt wenn ihr nächstes Request
+  // mit 401 beantwortet wird. 
   const [loggedIn, setLoggedIn] = useState(true);
 
   const login = () => {
