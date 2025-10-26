@@ -1,6 +1,6 @@
 import { postUserLogin } from '../backend/API';
 import { put, takeEvery, all, call } from 'redux-saga/effects';
-import { setUserInfo } from '../slice/usernameSlice';
+import { setUserInfo } from '../slice/userInfoSlice';
 
 // Hier wird versucht, einzuloggen, und danach
 // wird eins der übergegebene Operationen ausgeführt
