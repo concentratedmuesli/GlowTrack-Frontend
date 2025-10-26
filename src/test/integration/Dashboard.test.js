@@ -1,4 +1,4 @@
-import Dashboard from '../../Dashboard';
+import Dashboard from '../../dashboard/Dashboard';
 import { Provider } from 'react-redux';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
